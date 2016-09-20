@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="main" style="position: relative;">
+		
+		<input type="button" name="" id="btn2" value="button" style="position:absolute;wideth:200px;height:100px">
+	</div>
+	<script>
+
+window.onload=fnDown;
+function fnDown(obj){
+	obj.addEventListener("mousedown",fnDray,false); //当按下鼠标是触发拖曳
+	function fnDray(){
+		e=event||window.event;
+		var disL=e.clientX-obj.offsetLeft;          //获取触发事件时鼠标光标在容器的位置
+		 var disH=e.clientY-obj.offsetTop;      
+
+		document.addEventListener("mousemove",fnDray2,false);
+		function fnDray2(){                                       
+			e=event||window.event; 
+			var winW=document.documentElement.clientWidth;
+			var winH=document.documentElement.clientHeight;
+			var maxW=winW-obj.offsetWidth;
+			var maxH=winH-obj.offsetHeight;
+			var posX=e.clientX-disL;                //移动时光标依然在点击的位置
+			var posY=e.clientY-disH;
+			
+			if(posX<0) {                       //限制移动范围
+				posX=0;
+			}
+			else if(posX>maxW){
+				posX=maxW;
+			}
+			if(posY<0) {
+				posY=0;
+			}
+			else if(posY>maxH) {
+				posY=maxH;
+			}
+			obj.style.left=posX+"px";
+			obj.style.top=posY+"px";
+		}    
+		 obj.addEventListener("mouseup",function(){
+    	document.removeEventListener("mousemove",fnDray2,false);
+
+    	},false);
+	}
+	  
+}
+fnDown(document.getElementById("btn2"));
+	</script>
+}
+</body>
+</html>
+
