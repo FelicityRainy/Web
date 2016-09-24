@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-09-23 18:05:40
+ * @version $Id$
+ */
+*{
+	padding: 0;
+	margin: 0;
+	font-family: sans-serif;
+}
+ul,ol,li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	display: block;
+	color:#fff;
+
+}
+img{
+	border: none;
+	display: block;
+}
+.clearfix{
+	zoom:1;
+
+}
+.clearfix:after{
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0;
+	line-height: 1.8px;
+
+}
